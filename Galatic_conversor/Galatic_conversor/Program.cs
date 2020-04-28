@@ -1,7 +1,8 @@
 ﻿using Galatic_conversor.Entities;
 using System;
 using System.Collections.Generic;
-
+using System.IO;
+using System.Reflection;
 
 namespace Galatic_conversor
 {
@@ -11,7 +12,8 @@ namespace Galatic_conversor
 
         static void Main(string[] args)
         {
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\ravel\OneDrive\Área de Trabalho\Projetos-de-cSharp\Galatic_conversor\Galatic_conversor\Txt\txt.txt");
+            string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"..\..\..\Txt\txt.txt");
+            string[] lines = System.IO.File.ReadAllLines(path);
             List<String> words = new List<string>();
             List<CashWords> cashWords = new List<CashWords>();
             List<Product> products = new List<Product>();
