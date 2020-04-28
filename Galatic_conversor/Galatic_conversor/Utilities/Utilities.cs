@@ -24,9 +24,11 @@ namespace Galatic_conversor.Utilities
 
         public static int TotalRomanValue(List<CashWords> cash, List<String> words)
         {
+            
             int value = 0;
             int[] numbers = new int[words.Count];
             int count = 0;
+            int countPass = 0;
 
             foreach(String x in words)
             {
@@ -44,61 +46,81 @@ namespace Galatic_conversor.Utilities
                
                 if(numbers[i] == numbers[i - 1])
                 {
-                    if(numbers[i] == 5 || numbers[i] == 50 || numbers[i] == 500)
+                    countPass++;
+                    if (countPass == 1)
                     {
-                        Console.WriteLine("Invalid number1");
+                        value = numbers[i];
+                    }
+
+                    if (numbers[i] == 5 || numbers[i] == 50 || numbers[i] == 500)
+                    {
+                        Console.WriteLine("Error: Invalid number 1");
                         Console.WriteLine(numbers[i]);
                         return 0;
                     }
                     count++;
                     if (count == 2)
                     {
-                        Console.WriteLine("Invalid number2");
+                        Console.WriteLine("Error: Invalid number 2");
                         Console.WriteLine(numbers[i]);
                         return 0;
                     }
                     value = numbers[i] * 2;
+                    count = 0;
                 }
                 
 
                 if (numbers[i] > numbers[i - 1])
                 {
-                    if(numbers[i-1] == 5 || numbers[i-1] == 50 || numbers[i-1] == 500)
+
+                    countPass++;
+                    if (countPass == 1)
                     {
-                        Console.WriteLine("Invalid number3");
-                        Console.WriteLine(numbers[i+1]);
-                        Console.WriteLine(numbers[i]);
-                        Console.WriteLine(numbers[i-1]);
-                        
+                        value = numbers[i];
+                    }
+                    if (numbers[i-1] == 5 || numbers[i-1] == 50 || numbers[i-1] == 500)
+                    {
+                        Console.WriteLine("Error: Invalid number 3"); 
                         return 0;
+                        
                     }
                     if (numbers[i] != 5 && numbers[i] != 10 & numbers[i-1] == 1)
                     {
-                        Console.WriteLine("Invalid number4");
+                        Console.WriteLine("Error: Invalid number 4");
                         Console.WriteLine(numbers[i]);
                         return 0;
                     }
                     if (numbers[i] != 500 && numbers[i] != 1000 & numbers[i - 1] == 100)
                     {
-                        Console.WriteLine("Invalid number5");
+                        Console.WriteLine("Error: Invalid number 5");
                         Console.WriteLine(numbers[i]);
                         return 0;
                     }
                     if (numbers[i] != 5 && numbers[i] != 10 & numbers[i-1] == 1)
                     {
-                        Console.WriteLine("Invalid number6");
+                        Console.WriteLine("Error: Invalid number 6");
                         Console.WriteLine(numbers[i]);
                         return 0;
                     }
 
                     count = 0;
+                    
                     value -= numbers[i-1] ;
+                    
+                    
                 }
 
                 if (numbers[i] < numbers[i - 1])
                 {
+
+                    countPass++;
+                    if(countPass == 1)
+                    {
+                        value = numbers[i];
+                    }
                     count = 0;
                     value += numbers[i - 1];
+                    
                 }
             }
 

@@ -1,36 +1,119 @@
 ﻿using Galatic_conversor.Entities;
-using Galatic_conversor.Utilities;
 using System;
 using System.Collections.Generic;
+
 
 namespace Galatic_conversor
 {
     class Program
     {
+
+
         static void Main(string[] args)
         {
-            List<CashWords> cash = new List<CashWords>();
-            List<String> words = new List<String>();
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\ravel\OneDrive\Área de Trabalho\Projetos-de-cSharp\Galatic_conversor\Galatic_conversor\Txt\txt.txt");
+            List<String> words = new List<string>();
+            List<CashWords> cashWords = new List<CashWords>();
+            List<Product> products = new List<Product>();
 
-            cash.Add(new CashWords("um", 'I'));
-            cash.Add(new CashWords("cinco", 'V'));
-            cash.Add(new CashWords("dez", 'X'));
-            cash.Add(new CashWords("cinquenta", 'L'));
-            cash.Add(new CashWords("cem", 'C'));
-            cash.Add(new CashWords("quinhentos", 'D'));
-            cash.Add(new CashWords("mil", 'M'));
+            foreach (String line in lines)
+            {
+                string[] shatterdLine = line.Split(" ");
 
-            words.Add("mil");
-            words.Add("cem");
-            words.Add("mil");
-            words.Add("dez");
-            words.Add("cinquenta");
-            words.Add("um");
-            words.Add("cinco");
+                if (shatterdLine[1] == "is")
+                {
+                    char c = char.Parse(shatterdLine[2]);
+                    if (Utilities.Utilities.CheckRoman(c))
+                    {
+
+                        cashWords.Add(new CashWords(shatterdLine[0], c));
+
+                    }
+                 
+                }
 
 
-            int valor = Utilities.Utilities.TotalRomanValue(cash, words);
-            Console.WriteLine(valor);
+                else
+                {
+                    for (int i = 0; i < shatterdLine.Length; i++)
+                    {
+
+                        if (shatterdLine[i] == "is")
+                        {
+                            for (int j = 0; j < i - 1; j++)
+                            {
+                                words.Add(shatterdLine[j]);
+                            }
+
+
+                            String name = shatterdLine[i - 1];
+                            int value = int.Parse(shatterdLine[i + 1]);
+                            int sumValue = Utilities.Utilities.TotalRomanValue(cashWords, words);
+
+                            value = value / sumValue;
+                            products.Add(new Product(name, value));
+                        }
+
+                        words = new List<string>();
+                        // certo
+                    }
+                }
+
+                if (shatterdLine[0] == "quanto")
+                {
+                    for (int j = 0; j < shatterdLine.Length; j++)
+                    {
+                        if (j > 1 && j < shatterdLine.Length - 1)
+                        {
+                            words.Add(shatterdLine[j]);
+
+                        }
+                    }
+
+                    if (Utilities.Utilities.TotalRomanValue(cashWords, words) != 0)
+                    {
+                        foreach (String x in words)
+                        {
+                            Console.Write(x + " ");
+                        }
+                        Console.Write(" is ");
+                        Console.WriteLine(Utilities.Utilities.TotalRomanValue(cashWords, words));
+                    }
+                    else
+                    {
+                        Console.WriteLine("I have no idea what you are talking about ");
+                    }
+
+
+                }
+
+                words = new List<string>();
+
+                if (shatterdLine[0] == "quantos")
+                {
+                    for (int j = 3; j < shatterdLine.Length - 2; j++)
+                    {
+                        words.Add(shatterdLine[j]);
+                        Console.Write(shatterdLine[j]+" ");
+
+                    }
+
+                    int n = Utilities.Utilities.TotalRomanValue(cashWords, words);
+                    Product result = products.Find(x => x.Name == shatterdLine[shatterdLine.Length - 2]);
+                    Console.WriteLine(result.Name + " is " + n*result.Value + " Credits");
+
+                }
+
+
+            }
+
+
         }
+
+
+
     }
+
 }
+
+

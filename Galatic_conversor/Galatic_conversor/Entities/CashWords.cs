@@ -39,7 +39,8 @@ namespace Galatic_conversor.Entities
                     Value = 1000;
                     break;
                 default:
-                    Console.WriteLine("Invalid char. Value = 1");
+                    Console.WriteLine("Invalid char. "+ c +" = I");
+                    Value = 1;
                     break;
 
             }
