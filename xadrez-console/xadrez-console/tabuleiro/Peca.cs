@@ -38,7 +38,7 @@ namespace tabuleiro
         protected bool existeInimigo(Posicao pos)
         {
             Peca p = tab.peca(pos);
-            return p != null || p.cor != cor;
+            return p != null && p.cor != cor;
         }
 
         public bool existeMovimentoPossiveis()
