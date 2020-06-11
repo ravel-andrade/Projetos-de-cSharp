@@ -24,6 +24,11 @@ namespace tabuleiro
             qteMovimentos++;
         }
 
+        public void decrementaQteMovimentos()
+        {
+            qteMovimentos--;
+        }
+
         protected bool podeMover(Posicao pos)
         {
             Peca p = tab.peca(pos);
