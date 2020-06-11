@@ -35,6 +35,12 @@ namespace tabuleiro
             return p == null || p.cor != cor;
         }
 
+        protected bool existeInimigo(Posicao pos)
+        {
+            Peca p = tab.peca(pos);
+            return p != null || p.cor != cor;
+        }
+
         public bool existeMovimentoPossiveis()
         {
             bool[,] mat = movimentosPossiveis();
@@ -52,7 +58,7 @@ namespace tabuleiro
             return false;
         }
 
-        public bool podeMoverPara(Posicao pos)
+        public bool movimentoPossivel(Posicao pos)
         {
             return movimentosPossiveis()[pos.linha, pos.coluna];
         }

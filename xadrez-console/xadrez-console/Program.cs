@@ -11,7 +11,8 @@ namespace xadrez_console
         static void Main(string[] args)
         {
 
-            try {
+            try
+            {
                 PartidaDeXadrez partida = new PartidaDeXadrez();
 
                 while (!partida.terminada)
@@ -37,23 +38,23 @@ namespace xadrez_console
                         partida.realizaJogada(origem, destino);
 
                     }
-                    catch(TabuleiroException e)
+                    catch (TabuleiroException e)
                     {
                         Console.WriteLine(e.Message);
                         Console.ReadLine();
                     }
+
                 }
-                
-
-
-            
-            }catch(TabuleiroException e)
+                Console.Clear();
+                Tela.imprimirPartida(partida);
+            }
+            catch (TabuleiroException e)
             {
                 Console.WriteLine(e.Message);
             }
-            
-            
-            
+
+
+
         }
     }
 }
