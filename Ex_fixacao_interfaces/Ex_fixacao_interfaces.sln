@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30128.74
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex_fixacao_interfaces", "Ex_fixacao_interfaces\Ex_fixacao_interfaces.csproj", "{F455C7DD-59EF-4F4F-87E5-30A7EC1F9F16}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F455C7DD-59EF-4F4F-87E5-30A7EC1F9F16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F455C7DD-59EF-4F4F-87E5-30A7EC1F9F16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F455C7DD-59EF-4F4F-87E5-30A7EC1F9F16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F455C7DD-59EF-4F4F-87E5-30A7EC1F9F16}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {849434E0-499B-44E6-B2EB-C761B8FDA023}
+	EndGlobalSection
+EndGlobal
